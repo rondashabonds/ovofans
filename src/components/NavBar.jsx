@@ -14,8 +14,8 @@ export default function NavBar() {
           <span>OVO Projects</span>
         </a>
 
-        {/* No toggle JS required yet — CSS stacks this vertically on narrow screens */}
-        <nav id="primaryNav" className="nav" aria-label="Primary">
+        {}
+        <nav className="nav" aria-label="Primary">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/biography">Biography</NavLink>
           <NavLink to="/discography">Discography</NavLink>

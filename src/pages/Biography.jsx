@@ -7,12 +7,10 @@ export default function Biography() {
           <div className="col">
             <p>
               Aubrey “Drake” Graham is a Canadian artist known for blending rap and R&amp;B into a distinct sound with
-              prolific, chart-topping releases. His catalog spans introspective lyrics, melodic hooks, and hit
-              collaborations that shape modern pop.
+              prolific, chart-topping releases.
             </p>
             <p>
-              Beyond music, Drake’s OVO brand and business ventures broaden his cultural reach, while themes of ambition,
-              reflection, and momentum run through his work.
+              Beyond music, Drake’s OVO brand and business ventures broaden his cultural reach.
             </p>
           </div>
           <div className="col">

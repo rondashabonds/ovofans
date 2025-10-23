@@ -2,14 +2,14 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
-import "./styles/styles.css";
+import "./styles/styles.css"; // global base styles
 
-const root = createRoot(document.getElementById("root"));
-root.render(
+createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>
 );
+
 
