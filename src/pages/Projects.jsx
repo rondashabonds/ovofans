@@ -1,10 +1,10 @@
 import ProjectCard from "../components/ProjectCard.jsx";
 
 const projects = [
-  { img: "/images/d1.jpg", title: "Project 01", category: "Web", year: "2025", blurb: "OVO vibe demo" },
-  { img: "/images/d2.jpg", title: "Project 02", category: "Design", year: "2025", blurb: "Cover concepts" },
-  { img: "/images/d3.jpg", title: "Project 03", category: "Data", year: "2025", blurb: "Streaming stats" },
-  { img: "/images/d4.jpg", title: "Project 04", category: "Other", year: "2025", blurb: "Brand ephemera" }
+  { img: "src/images/d1.jpg", title: "Project 01", category: "Web", year: "2025", blurb: "OVO vibe demo" },
+  { img: "src/images/d2.jpg", title: "Project 02", category: "Design", year: "2025", blurb: "Cover concepts" },
+  { img: "src/images/d3.jpg", title: "Project 03", category: "Data", year: "2025", blurb: "Streaming stats" },
+  { img: "src/images/d4.jpg", title: "Project 04", category: "Other", year: "2025", blurb: "Brand ephemera" }
 ];
 
 export default function Projects() {

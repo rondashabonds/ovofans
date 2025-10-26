@@ -7,10 +7,10 @@ export default function Media() {
           <section className="media-block">
             <h3 className="media-heading">Featured</h3>
             <div className="gallery">
-              <img src="/images/images (1).jpg" alt="OVO aesthetic 1" />
-              <img src="/images/images (2).jpg" alt="OVO aesthetic 2" />
-              <img src="/images/images.jpg" alt="OVO aesthetic 3" />
-              <img src="/images/drake-new-songs.webp" alt="OVO aesthetic 4" />
+              <img src="src/images/d6.jpg" alt="OVO aesthetic 1" />
+              <img src="src/images/d7.jpg" alt="OVO aesthetic 2" />
+              <img src="src/images/d5.jpg" alt="OVO aesthetic 3" />
+              <img src="src/images/d4.jpg" alt="OVO aesthetic 4" />
             </div>
           </section>
         </div>
