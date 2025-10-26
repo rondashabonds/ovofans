@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ovofans/static/css/main.fb71a2e4.css",
+    "main.js": "/ovofans/static/js/main.de88dcb8.js",
+    "index.html": "/ovofans/index.html",
+    "main.fb71a2e4.css.map": "/ovofans/static/css/main.fb71a2e4.css.map",
+    "main.de88dcb8.js.map": "/ovofans/static/js/main.de88dcb8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fb71a2e4.css",
+    "static/js/main.de88dcb8.js"
+  ]
+}
