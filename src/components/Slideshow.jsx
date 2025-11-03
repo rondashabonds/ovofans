@@ -1,4 +1,4 @@
-// src/components/Slideshow.jsx
+
 import { useState, useEffect } from "react";
 import "../styles/slideshoww.css";
 import d1 from "../images/d1.jpg";
@@ -23,7 +23,7 @@ const slides = [
 export default function Slideshow() {
   const [index, setIndex] = useState(0);
 
-  // auto advance every 5 seconds
+  
   useEffect(() => {
     const id = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
