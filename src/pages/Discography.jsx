@@ -1,9 +1,9 @@
 import AlbumCard from "../components/AlbumCard.jsx";
 
 const albums = [
-  { img: "src/images/take-care.jpg", name: "Take Care", meta: "2011 • Studio Album" },
-  { img: "src/images/Drake_-_Nothing_Was_the_Same_cover.png", name: "Nothing Was the Same", meta: "2013 • Studio Album" },
-  { img: "src/images/drakescorp.webp", name: "Scorpion", meta: "2018 • Double Album" }
+  { img: "images/take-care.jpg", name: "Take Care", meta: "2011 • Studio Album" },
+  { img: "images/Drake_-_Nothing_Was_the_Same_cover.png", name: "Nothing Was the Same", meta: "2013 • Studio Album" },
+  { img: "images/drakescorp.webp", name: "Scorpion", meta: "2018 • Double Album" }
 ];
 
 export default function Discography() {

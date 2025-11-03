@@ -1,0 +1,89 @@
+.contact-section {
+  background-color: #0a0a0a;
+  color: #fff;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+}
+
+.contact-card {
+  background-color: #111;
+  border: 1px solid #c3a356;
+  border-radius: 1rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+  padding: 1.5rem;
+}
+
+.contact-title {
+  color: #c3a356;
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.contact-sub {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
+.contact-form .field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #eee;
+}
+
+.contact-form .field span {
+  margin-bottom: 0.4rem;
+  color: #c3a356;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: #000;
+  border: 1px solid #444;
+  color:black;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  outline: none;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #c3a356;
+  box-shadow: 0 0 0 3px rgba(195,163,86,.35);
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: #c3a356;
+  color: #000;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.submit-btn:hover {
+  filter: brightness(1.1);
+}
+
+.form-status {
+  display: block;
+  text-align: center;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+  color: #fff;
+}

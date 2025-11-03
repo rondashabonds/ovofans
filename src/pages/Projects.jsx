@@ -1,11 +1,16 @@
 import ProjectCard from "../components/ProjectCard.jsx";
+import d5 from "../images/d5.webp";
+import d6 from "../images/d6.jpg";
+import d7 from "../images/d7.jpg";
+import d8 from "../images/d8.jpg";
 
 const projects = [
-  { img: "src/images/d1.jpg", title: "Project 01", category: "Web", year: "2025", blurb: "OVO vibe demo" },
-  { img: "src/images/d2.jpg", title: "Project 02", category: "Design", year: "2025", blurb: "Cover concepts" },
-  { img: "src/images/d3.jpg", title: "Project 03", category: "Data", year: "2025", blurb: "Streaming stats" },
-  { img: "src/images/d4.jpg", title: "Project 04", category: "Other", year: "2025", blurb: "Brand ephemera" }
+  { img: d5, title: "Project 01", category: "Web", year: "2025", blurb: "OVO vibe demo" },
+  { img: d6, title: "Project 02", category: "Design", year: "2025", blurb: "Cover concepts" },
+  { img: d7, title: "Project 03", category: "Data", year: "2025", blurb: "Streaming stats" },
+  { img: d8, title: "Project 04", category: "Other", year: "2025", blurb: "Brand ephemera" },
 ];
+
 
 export default function Projects() {
   return (
