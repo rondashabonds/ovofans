@@ -1,9 +1,14 @@
 import AlbumCard from "../components/AlbumCard.jsx";
+import d9 from "../images/d9.webp";
+import d10 from "../images/d10.jpg";
+import d11 from "../images/d11.jpg";
+import d12 from "../images/d12.webp";
 
-const albums = [
-  { img: "images/take-care.jpg", name: "Take Care", meta: "2011 • Studio Album" },
-  { img: "images/Drake_-_Nothing_Was_the_Same_cover.png", name: "Nothing Was the Same", meta: "2013 • Studio Album" },
-  { img: "images/drakescorp.webp", name: "Scorpion", meta: "2018 • Double Album" }
+const projects = [
+  { img: d9, title: "Project 01", category: "Web", year: "2025", blurb: "OVO vibe demo" },
+  { img: d10, title: "Project 02", category: "Design", year: "2025", blurb: "Cover concepts" },
+  { img: d11, title: "Project 03", category: "Data", year: "2025", blurb: "Streaming stats" },
+  { img: d12, title: "Project 04", category: "Other", year: "2025", blurb: "Brand ephemera" },
 ];
 
 export default function Discography() {
@@ -12,11 +17,17 @@ export default function Discography() {
       <div className="container">
         <h2 className="section-title">Discography</h2>
         <div className="album-grid">
-          {albums.map((a) => (
-            <AlbumCard key={a.name} img={a.img} name={a.name} meta={a.meta} />
+          {projects.map((p) => (
+            <AlbumCard
+              key={p.title}
+              img={p.img}
+              name={p.title}
+              meta={`${p.category} • ${p.year} • ${p.blurb}`}
+            />
           ))}
         </div>
       </div>
     </section>
   );
 }
+
