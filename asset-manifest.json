@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/ovofans/static/css/main.fb71a2e4.css",
-    "main.js": "/ovofans/static/js/main.de88dcb8.js",
+    "main.css": "/ovofans/static/css/main.71c568d4.css",
+    "main.js": "/ovofans/static/js/main.573c2b68.js",
+    "static/media/d5.webp": "/ovofans/static/media/d5.702fa841b5b9cb8b6560.webp",
     "index.html": "/ovofans/index.html",
-    "main.fb71a2e4.css.map": "/ovofans/static/css/main.fb71a2e4.css.map",
-    "main.de88dcb8.js.map": "/ovofans/static/js/main.de88dcb8.js.map"
+    "main.71c568d4.css.map": "/ovofans/static/css/main.71c568d4.css.map",
+    "main.573c2b68.js.map": "/ovofans/static/js/main.573c2b68.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb71a2e4.css",
-    "static/js/main.de88dcb8.js"
+    "static/css/main.71c568d4.css",
+    "static/js/main.573c2b68.js"
   ]
 }
