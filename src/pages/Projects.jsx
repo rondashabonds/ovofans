@@ -7,7 +7,7 @@ import d6 from "../images/d6.jpg";
 import d7 from "../images/d7.jpg";
 import d8 from "../images/d8.jpg";
 
-// Static fallback projects
+
 const staticProjects = [
   { _id: "local-1", img: d5, title: "Project 01", category: "Web", year: "2025", blurb: "OVO vibe demo" },
   { _id: "local-2", img: d6, title: "Project 02", category: "Design", year: "2025", blurb: "Cover concepts" },
@@ -22,7 +22,7 @@ export default function Projects() {
 
   const loadProjects = async () => {
     try {
-      // 🔥 Render server URL
+      
       const res = await fetch("https://ovofansserver.onrender.com/api/projects", {
         headers: {
           "Content-Type": "application/json"
@@ -33,11 +33,11 @@ export default function Projects() {
 
       const data = await res.json();
 
-      // Merge static projects + server projects
+      
       setProjects([...staticProjects, ...data]);
     } catch (err) {
       console.log("Render server offline — using static only");
-      // Fallback only static
+     
       setProjects([...staticProjects]);
     }
   };
