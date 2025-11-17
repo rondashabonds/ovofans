@@ -9,3 +9,67 @@
 .card-body{ padding:12px 14px 14px; border-top:1px solid var(--border); }
 .card-title{ margin:0 0 4px; font-size:1rem; letter-spacing:.2px; }
 .card-meta{ margin:0; font-size:.9rem; opacity:.75; }
+.card-actions {
+  padding: 12px;
+  text-align: center;
+}
+
+.add-btn-card {
+  background-color: #c3a356;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-btn-card:hover {
+  background-color: #a38a49; 
+  .projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.add-project-top-btn {
+  background: var(--accent, #c3a356);
+  color: white;
+  padding: 12px 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.add-project-top-btn:hover {
+  opacity: .85;
+}
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.add-project-top-btn {
+  background: var(--accent, #c3a356);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-project-top-btn:hover {
+  opacity: 0.85;
+}
+
+
+}
+

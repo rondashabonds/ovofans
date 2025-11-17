@@ -335,4 +335,26 @@ a:focus, button:focus, input:focus, textarea:focus{
 
 
   .form { grid-template-columns: 1fr; }
+  .projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.add-project-top-btn {
+  background: var(--accent, #c3a356);
+  color: white;
+  padding: 12px 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.add-project-top-btn:hover {
+  opacity: .85;
+}
+
 }
