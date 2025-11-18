@@ -24,7 +24,9 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
     formData.append("blurb", e.target.blurb.value.trim());
 
     const file = e.target.img.files[0];
-    if (file) formData.append("img", file);
+    if (file) {
+      formData.append("img", file, file.name);
+    }
 
     try {
       const response = await fetch(`${API_BASE}/api/projects`, {
@@ -32,15 +34,17 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
         body: formData,
       });
 
+      const raw = await response.text();
+      console.log("RAW RESPONSE:", raw);
+
       if (response.ok) {
         refreshProjects();
         close();
       } else {
-        const err = await response.json();
-        setResult(err.error || "Error adding project");
+        setResult("Error adding project");
       }
     } catch (error) {
-      console.log(error);
+      console.error("POST ERROR:", error);
       setResult("Server error");
     }
   };
@@ -54,7 +58,7 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
           </span>
 
           <form onSubmit={submitProject}>
-            <h3>Add New Project</h3>
+            <h3>{project ? "Edit Project" : "Add New Project"}</h3>
 
             <label>Project Title:</label>
             <input type="text" name="title" required />
@@ -69,11 +73,19 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
             <textarea name="blurb" required></textarea>
 
             <label>Upload Image:</label>
-            <input type="file" name="img" accept="image/*" onChange={uploadImage} />
+            <input
+              type="file"
+              name="img"
+              accept="image/*"
+              onChange={uploadImage}
+            />
 
             {preview && <img id="img-prev" src={preview} alt="preview" />}
 
-            <button type="submit" className="submit-btn">Submit</button>
+            <button type="submit" className="submit-btn">
+              Submit
+            </button>
+
             <p>{result}</p>
           </form>
         </div>
