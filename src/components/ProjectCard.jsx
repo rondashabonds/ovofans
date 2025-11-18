@@ -16,7 +16,11 @@ export default function ProjectCard({
           <img
             src={img}
             alt={`${title} preview`}
-            onError={(e)=> (e.currentTarget.style.display="none")}
+            onError={(e) => {
+              console.log("Image failed to load:", img);
+              e.currentTarget.src =
+                "https://via.placeholder.com/300?text=Image+Not+Found";
+            }}
           />
         ) : (
           <div style={{ aspectRatio: "1/1" }} />

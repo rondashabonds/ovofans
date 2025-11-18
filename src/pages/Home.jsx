@@ -3,7 +3,7 @@ import AlbumCard from "../components/AlbumCard.jsx";
 
 import "../styles/album-card.css";
 
-// 🔥 FORCE API BASE TO YOUR RENDER URL
+//FORCE API BASE TO YOUR RENDER URL
 const API_BASE = "https://ovofansserver.onrender.com";
 
 export default function Home() {
