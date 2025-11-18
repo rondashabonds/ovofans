@@ -17,17 +17,14 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
     e.preventDefault();
     setResult("Submitting...");
 
-    
     const formData = new FormData();
-    formData.append("title", e.target.title.value);
-    formData.append("category", e.target.category.value);
-    formData.append("year", e.target.year.value);
-    formData.append("blurb", e.target.blurb.value);
+    formData.append("title", e.target.title.value.trim());
+    formData.append("category", e.target.category.value.trim());
+    formData.append("year", String(e.target.year.value).trim());
+    formData.append("blurb", e.target.blurb.value.trim());
 
-    
-    if (e.target.img.files[0]) {
-      formData.append("img", e.target.img.files[0]);
-    }
+    const file = e.target.img.files[0];
+    if (file) formData.append("img", file);
 
     try {
       const response = await fetch(`${API_BASE}/api/projects`, {
@@ -39,32 +36,12 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
         refreshProjects();
         close();
       } else {
-        setResult("Error adding project");
+        const err = await response.json();
+        setResult(err.error || "Error adding project");
       }
     } catch (error) {
       console.log(error);
       setResult("Server error");
-    }
-  };
-
-  const deleteProject = async () => {
-    if (!project || !project._id) return;
-
-    if (!window.confirm("Are you sure you want to delete this project?")) return;
-
-    try {
-      const response = await fetch(`${API_BASE}/api/projects/${project._id}`, {
-        method: "DELETE",
-      });
-
-      if (response.ok) {
-        refreshProjects();
-        close();
-      } else {
-        alert("Error deleting project");
-      }
-    } catch (error) {
-      alert("Server error deleting project");
     }
   };
 
@@ -77,63 +54,26 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
           </span>
 
           <form onSubmit={submitProject}>
-            <h3>{project ? "Edit Project" : "Add New Project"}</h3>
+            <h3>Add New Project</h3>
 
             <label>Project Title:</label>
-            <input
-              type="text"
-              name="title"
-              required
-              defaultValue={project?.title || ""}
-            />
+            <input type="text" name="title" required />
 
             <label>Category:</label>
-            <input
-              type="text"
-              name="category"
-              required
-              defaultValue={project?.category || ""}
-            />
+            <input type="text" name="category" required />
 
             <label>Year:</label>
-            <input
-              type="number"
-              name="year"
-              required
-              defaultValue={project?.year || ""}
-            />
+            <input type="number" name="year" required />
 
             <label>Description:</label>
-            <textarea
-              name="blurb"
-              required
-              defaultValue={project?.blurb || ""}
-            ></textarea>
+            <textarea name="blurb" required></textarea>
 
             <label>Upload Image:</label>
-            <input
-              type="file"
-              name="img"
-              accept="image/*"
-              onChange={uploadImage}
-            />
+            <input type="file" name="img" accept="image/*" onChange={uploadImage} />
 
             {preview && <img id="img-prev" src={preview} alt="preview" />}
 
-            <button type="submit" className="submit-btn">
-              {project ? "Save Changes" : "Submit"}
-            </button>
-
-            {project && project._id && (
-              <button
-                type="button"
-                className="delete-project-btn"
-                onClick={deleteProject}
-              >
-                Delete Project
-              </button>
-            )}
-
+            <button type="submit" className="submit-btn">Submit</button>
             <p>{result}</p>
           </form>
         </div>
