@@ -17,7 +17,17 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
     e.preventDefault();
     setResult("Submitting...");
 
-    const formData = new FormData(e.target);
+    
+    const formData = new FormData();
+    formData.append("title", e.target.title.value);
+    formData.append("category", e.target.category.value);
+    formData.append("year", e.target.year.value);
+    formData.append("blurb", e.target.blurb.value);
+
+    
+    if (e.target.img.files[0]) {
+      formData.append("img", e.target.img.files[0]);
+    }
 
     try {
       const response = await fetch(`${API_BASE}/api/projects`, {
@@ -101,7 +111,12 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
             ></textarea>
 
             <label>Upload Image:</label>
-            <input type="file" name="img" accept="image/*" onChange={uploadImage} />
+            <input
+              type="file"
+              name="img"
+              accept="image/*"
+              onChange={uploadImage}
+            />
 
             {preview && <img id="img-prev" src={preview} alt="preview" />}
 
