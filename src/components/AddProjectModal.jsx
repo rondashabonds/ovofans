@@ -1,12 +1,16 @@
 import "../styles/dialog.css";
 import React, { useState } from "react";
 
+const API_BASE = "https://ovofansserver.onrender.com";
+
 export default function AddProjectModal({ close, refreshProjects, project }) {
   const [preview, setPreview] = useState("");
   const [result, setResult] = useState("");
 
   const uploadImage = (e) => {
-    setPreview(URL.createObjectURL(e.target.files[0]));
+    if (e.target.files[0]) {
+      setPreview(URL.createObjectURL(e.target.files[0]));
+    }
   };
 
   const submitProject = async (e) => {
@@ -16,18 +20,19 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
     const formData = new FormData(e.target);
 
     try {
-      const response = await fetch("http://localhost:5000/api/projects", {
+      const response = await fetch(`${API_BASE}/api/projects`, {
         method: "POST",
         body: formData,
       });
 
-      if (response.status === 200) {
+      if (response.ok) {
         refreshProjects();
         close();
       } else {
         setResult("Error adding project");
       }
     } catch (error) {
+      console.log(error);
       setResult("Server error");
     }
   };
@@ -38,11 +43,16 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
     if (!window.confirm("Are you sure you want to delete this project?")) return;
 
     try {
-      await fetch(`http://localhost:5000/api/projects/${project._id}`, {
+      const response = await fetch(`${API_BASE}/api/projects/${project._id}`, {
         method: "DELETE",
       });
-      refreshProjects();
-      close();
+
+      if (response.ok) {
+        refreshProjects();
+        close();
+      } else {
+        alert("Error deleting project");
+      }
     } catch (error) {
       alert("Server error deleting project");
     }
@@ -52,7 +62,6 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
     <div className="w3-modal">
       <div className="w3-modal-content">
         <div className="w3-container">
-
           <span className="w3-button w3-display-topright" onClick={close}>
             &times;
           </span>
@@ -101,14 +110,17 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
             </button>
 
             {project && project._id && (
-              <button type="button" className="delete-project-btn" onClick={deleteProject}>
+              <button
+                type="button"
+                className="delete-project-btn"
+                onClick={deleteProject}
+              >
                 Delete Project
               </button>
             )}
 
             <p>{result}</p>
           </form>
-
         </div>
       </div>
     </div>

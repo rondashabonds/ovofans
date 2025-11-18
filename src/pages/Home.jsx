@@ -3,16 +3,19 @@ import AlbumCard from "../components/AlbumCard.jsx";
 
 import "../styles/album-card.css";
 
-const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:5000";
+// 🔥 FORCE API BASE TO YOUR RENDER URL
+const API_BASE = "https://ovofansserver.onrender.com";
 
 export default function Home() {
   const [albums, setAlbums] = useState([]);
-  const [selected, setSelected] = useState(null); 
+  const [selected] = useState(null);
 
   useEffect(() => {
     async function fetchAlbums() {
       try {
         const res = await fetch(`${API_BASE}/api/albums`);
+        if (!res.ok) throw new Error("Failed to fetch albums");
+
         const data = await res.json();
         setAlbums(data);
       } catch (err) {
@@ -41,7 +44,7 @@ export default function Home() {
             <AlbumCard
               key={album._id}
               album={album}
-              onSelect={() => setSelected(album)} // ✅ FIX
+              onSelect={() => console.log("selected", album)}
             />
           ))}
         </div>
