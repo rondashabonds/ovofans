@@ -69,7 +69,74 @@
 .add-project-top-btn:hover {
   opacity: 0.85;
 }
+.card {
+  background: #111;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.card-body {
+  margin-top: 12px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card-meta {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.delete-btn-card {
+  background: #b00020;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.delete-btn-card:hover {
+  background: #d00028;
+}
+
+.edit-btn-card {
+  background: #0072ff;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.edit-btn-card:hover {
+  background: #0a84ff;
+}
 
 
 }
+
 

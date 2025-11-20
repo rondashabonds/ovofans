@@ -7,7 +7,8 @@ export default function ProjectCard({
   category,
   year,
   blurb,
-  onEditClick
+  onEditClick,
+  onDelete
 }) {
   return (
     <article className="card">
@@ -42,10 +43,11 @@ export default function ProjectCard({
       </div>
 
       <div className="card-actions">
-        <button
-          className="edit-btn-card"
-          onClick={() => onEditClick && onEditClick()}
-        >
+        <button className="delete-btn-card" onClick={() => onDelete(_id)}>
+          Delete
+        </button>
+
+        <button className="edit-btn-card" onClick={() => onEditClick()}>
           Edit
         </button>
       </div>

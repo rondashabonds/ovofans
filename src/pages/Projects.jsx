@@ -7,7 +7,6 @@ import d6 from "../images/d6.jpg";
 import d7 from "../images/d7.jpg";
 import d8 from "../images/d8.jpg";
 
-
 const staticProjects = [
   { _id: "local-1", img: d5, title: "Project 01", category: "Web", year: "2025", blurb: "OVO vibe demo" },
   { _id: "local-2", img: d6, title: "Project 02", category: "Design", year: "2025", blurb: "Cover concepts" },
@@ -22,23 +21,30 @@ export default function Projects() {
 
   const loadProjects = async () => {
     try {
-      
       const res = await fetch("https://ovofansserver.onrender.com/api/projects", {
-        headers: {
-          "Content-Type": "application/json"
-        }
+        headers: { "Content-Type": "application/json" }
       });
 
       if (!res.ok) throw new Error("Failed to fetch");
 
       const data = await res.json();
-
-      
       setProjects([...staticProjects, ...data]);
     } catch (err) {
-      console.log("Render server offline — using static only");
-     
       setProjects([...staticProjects]);
+    }
+  };
+
+  const deleteProject = async (id) => {
+    if (!window.confirm("Delete this project?")) return;
+
+    try {
+      await fetch(`https://ovofansserver.onrender.com/api/projects/${id}`, {
+        method: "DELETE"
+      });
+
+      loadProjects();
+    } catch (err) {
+      console.log("Delete error", err);
     }
   };
 
@@ -69,6 +75,7 @@ export default function Projects() {
             <ProjectCard
               key={p._id}
               {...p}
+              onDelete={deleteProject}
               onEditClick={() => {
                 setEditingProject(p);
                 setShowModal(true);
