@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const API_BASE = "https://ovofansserver.onrender.com";
 
-export default function AddProjectModal({ close, refreshProjects }) {
+export default function AddProjectModal({ close, refreshProjects, project }) {
   const [preview, setPreview] = useState("");
   const [result, setResult] = useState("");
 
@@ -49,7 +49,7 @@ export default function AddProjectModal({ close, refreshProjects }) {
           </span>
 
           <form onSubmit={submitProject}>
-            <h3>Add New Project</h3>
+            <h3>{project ? "Edit Project" : "Add New Project"}</h3>
 
             <label>Project Title:</label>
             <input type="text" name="title" required />
@@ -73,7 +73,9 @@ export default function AddProjectModal({ close, refreshProjects }) {
 
             {preview && <img id="img-prev" src={preview} alt="preview" />}
 
-            <button type="submit" className="submit-btn">Submit</button>
+            <button type="submit" className="submit-btn">
+              Submit
+            </button>
 
             <p>{result}</p>
           </form>
