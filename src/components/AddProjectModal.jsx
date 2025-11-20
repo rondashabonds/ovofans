@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const API_BASE = "https://ovofansserver.onrender.com";
 
-export default function AddProjectModal({ close, refreshProjects, project }) {
+export default function AddProjectModal({ close, refreshProjects }) {
   const [preview, setPreview] = useState("");
   const [result, setResult] = useState("");
 
@@ -17,16 +17,7 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
     e.preventDefault();
     setResult("Submitting...");
 
-    const formData = new FormData();
-    formData.append("title", e.target.title.value.trim());
-    formData.append("category", e.target.category.value.trim());
-    formData.append("year", String(e.target.year.value).trim());
-    formData.append("blurb", e.target.blurb.value.trim());
-
-    const file = e.target.img.files[0];
-    if (file) {
-      formData.append("img", file, file.name);
-    }
+    const formData = new FormData(e.target);
 
     try {
       const response = await fetch(`${API_BASE}/api/projects`, {
@@ -58,7 +49,7 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
           </span>
 
           <form onSubmit={submitProject}>
-            <h3>{project ? "Edit Project" : "Add New Project"}</h3>
+            <h3>Add New Project</h3>
 
             <label>Project Title:</label>
             <input type="text" name="title" required />
@@ -82,9 +73,7 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
 
             {preview && <img id="img-prev" src={preview} alt="preview" />}
 
-            <button type="submit" className="submit-btn">
-              Submit
-            </button>
+            <button type="submit" className="submit-btn">Submit</button>
 
             <p>{result}</p>
           </form>
