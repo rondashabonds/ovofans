@@ -1,11 +1,18 @@
 import "../styles/dialog.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const API_BASE = "https://ovofansserver.onrender.com";
 
 export default function AddProjectModal({ close, refreshProjects, project }) {
   const [preview, setPreview] = useState("");
   const [result, setResult] = useState("");
+
+  // Prefill fields when editing
+  useEffect(() => {
+    if (project) {
+      setPreview(project.img || "");
+    }
+  }, [project]);
 
   const uploadImage = (e) => {
     if (e.target.files[0]) {
@@ -19,9 +26,22 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
 
     const formData = new FormData(e.target);
 
+    // If editing, remove empty file field so server doesn't reject
+    if (!formData.get("img")?.name) {
+      formData.delete("img");
+    }
+
     try {
-      const response = await fetch(`${API_BASE}/api/projects`, {
-        method: "POST",
+      let url = `${API_BASE}/api/projects`;
+      let method = "POST";
+
+      if (project) {
+        url = `${API_BASE}/api/projects/${project._id}`;
+        method = "PUT";
+      }
+
+      const response = await fetch(url, {
+        method,
         body: formData,
       });
 
@@ -29,13 +49,14 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
       console.log("RAW RESPONSE:", raw);
 
       if (response.ok) {
+        setResult(project ? "Project updated!" : "Project added!");
         refreshProjects();
-        close();
+        setTimeout(close, 500);
       } else {
-        setResult("Error adding project");
+        setResult("Error: " + raw);
       }
     } catch (error) {
-      console.error("POST ERROR:", error);
+      console.error("SUBMIT ERROR:", error);
       setResult("Server error");
     }
   };
@@ -52,16 +73,35 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
             <h3>{project ? "Edit Project" : "Add New Project"}</h3>
 
             <label>Project Title:</label>
-            <input type="text" name="title" required />
+            <input
+              type="text"
+              name="title"
+              defaultValue={project?.title}
+              required
+            />
 
             <label>Category:</label>
-            <input type="text" name="category" required />
+            <input
+              type="text"
+              name="category"
+              defaultValue={project?.category}
+              required
+            />
 
             <label>Year:</label>
-            <input type="number" name="year" required />
+            <input
+              type="number"
+              name="year"
+              defaultValue={project?.year}
+              required
+            />
 
             <label>Description:</label>
-            <textarea name="blurb" required></textarea>
+            <textarea
+              name="blurb"
+              defaultValue={project?.blurb}
+              required
+            />
 
             <label>Upload Image:</label>
             <input
@@ -74,7 +114,7 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
             {preview && <img id="img-prev" src={preview} alt="preview" />}
 
             <button type="submit" className="submit-btn">
-              Submit
+              {project ? "Save Changes" : "Submit"}
             </button>
 
             <p>{result}</p>
