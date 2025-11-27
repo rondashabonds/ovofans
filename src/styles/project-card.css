@@ -137,3 +137,20 @@
 .delete-btn:hover {
   background-color: #d00028;
 }
+
+/* =========================================================
+   DEBUG TEST
+========================================================= */
+.delete-btn,
+.edit-btn {
+  background: red !important;
+  color: white !important;
+  border: 3px solid yellow !important;
+  font-size: 20px !important;
+  padding: 20px !important;
+}
+
+.card-actions {
+  background: magenta !important;
+  min-height: 100px !important;
+}
