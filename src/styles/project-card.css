@@ -1,19 +1,61 @@
-.card{
-  border:1px solid var(--border); border-radius:12px; background:var(--bg);
-  overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,.05);
-  display:flex; flex-direction:column; transition:transform .08s ease;
-}
-.card:hover{ transform:translateY(-2px); }
-.card-media{ aspect-ratio:1/1; background:var(--muted-2); display:grid; place-items:center; }
-.card-media img{ width:100%; height:100%; object-fit:cover; }
-.card-body{ padding:12px 14px 14px; border-top:1px solid var(--border); }
-.card-title{ margin:0 0 4px; font-size:1rem; letter-spacing:.2px; }
-.card-meta{ margin:0; font-size:.9rem; opacity:.75; }
-.card-actions {
-  padding: 12px;
-  text-align: center;
+/* --- CARD WRAPPER --- */
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+  display: flex;
+  flex-direction: column;
+  transition: transform .08s ease;
 }
 
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* --- MEDIA --- */
+.card-media {
+  aspect-ratio: 1 / 1;
+  background: var(--muted-2);
+  display: grid;
+  place-items: center;
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- BODY --- */
+.card-body {
+  padding: 12px 14px 14px;
+  border-top: 1px solid var(--border);
+}
+
+.card-title {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  letter-spacing: .2px;
+}
+
+.card-meta {
+  margin: 0;
+  font-size: .9rem;
+  opacity: .75;
+}
+
+/* --- CARD ACTIONS BUTTON ROW --- */
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 12px;
+  justify-content: center;
+}
+
+/* --- ADD BUTTON INSIDE CARD --- */
 .add-btn-card {
   background-color: #c3a356;
   color: white;
@@ -26,28 +68,10 @@
 }
 
 .add-btn-card:hover {
-  background-color: #a38a49; 
-  .projects-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
+  background-color: #a38a49;
 }
 
-.add-project-top-btn {
-  background: var(--accent, #c3a356);
-  color: white;
-  padding: 12px 18px;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.add-project-top-btn:hover {
-  opacity: .85;
-}
+/* --- TOP HEADER BUTTON --- */
 .projects-header {
   display: flex;
   justify-content: space-between;
@@ -63,129 +87,38 @@
   border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: .2s ease;
 }
 
 .add-project-top-btn:hover {
-  opacity: 0.85;
-}
-.card {
-  background: #111;
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.4);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  opacity: .85;
 }
 
-.card-media img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-.card-body {
-  margin-top: 12px;
-}
-
-.card-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.card-meta {
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-.card-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 14px;
-}
-
+/* --- EDIT + DELETE BUTTONS --- */
+.edit-btn-card,
 .delete-btn-card {
-  background: #b00020;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 6px;
+  padding: 6px 12px;
   border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
+  color: white;
 }
 
-.delete-btn-card:hover {
-  background: #d00028;
-}
-
+/* Edit button */
 .edit-btn-card {
-  background: #0072ff;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
+  background-color: #007bff;
 }
 
 .edit-btn-card:hover {
-  background: #0a84ff;
-}
-.card-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
+  background-color: #0a84ff;
 }
 
-.edit-btn,
-.delete-btn {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
-.edit-btn {
-  background: #007bff;
-  color: white;
-}
-
-.delete-btn {
-  background: #d9534f;
-  color: white;
-}
-
-.card-actions {
-  margin-top: 12px;
-  display: flex;
-  gap: 10px;
-}
-
-.delete-btn-card,
-.edit-btn-card {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  cursor: pointer;
-}
-
+/* Delete button */
 .delete-btn-card {
   background-color: #d9534f;
-  color: white;
 }
 
-.edit-btn-card {
-  background-color: #007bff;
-  color: white;
+.delete-btn-card:hover {
+  background-color: #d00028;
 }
-
-
-}
-
-

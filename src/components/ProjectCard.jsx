@@ -42,7 +42,6 @@ export default function ProjectCard({
           </p>
         )}
 
-        {/* 🔥 Buttons moved INSIDE card-body so they ALWAYS show */}
         <div className="card-actions">
           <button className="delete-btn-card" onClick={() => onDelete(_id)}>
             Delete
