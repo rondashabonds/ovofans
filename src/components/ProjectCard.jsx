@@ -1,4 +1,4 @@
-import "../styles/projectcard.css";
+import "../styles/project-card.css";
 
 export default function ProjectCard({
   _id,
