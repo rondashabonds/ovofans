@@ -356,5 +356,44 @@ a:focus, button:focus, input:focus, textarea:focus{
 .add-project-top-btn:hover {
   opacity: .85;
 }
+/* =========================================================
+   PROJECT CARD BUTTONS
+========================================================= */
+
+.card-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 10px 0;
+  justify-content: center;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+}
+
+.edit-btn {
+  background-color: #007bff;
+}
+
+.edit-btn:hover {
+  background-color: #0a84ff;
+}
+
+.delete-btn {
+  background-color: #d9534f;
+}
+
+.delete-btn:hover {
+  background-color: #d00028;
+}
+
 
 }
