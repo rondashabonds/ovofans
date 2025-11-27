@@ -1,8 +1,10 @@
-/* --- CARD WRAPPER --- */
+/* =========================================================
+   CARD WRAPPER
+========================================================= */
 .card {
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: var(--bg);
+  background: var(--bg, #111);
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
   display: flex;
@@ -14,7 +16,9 @@
   transform: translateY(-2px);
 }
 
-/* --- MEDIA --- */
+/* =========================================================
+   CARD MEDIA
+========================================================= */
 .card-media {
   aspect-ratio: 1 / 1;
   background: var(--muted-2);
@@ -28,7 +32,9 @@
   object-fit: cover;
 }
 
-/* --- BODY --- */
+/* =========================================================
+   CARD BODY
+========================================================= */
 .card-body {
   padding: 12px 14px 14px;
   border-top: 1px solid var(--border);
@@ -46,16 +52,20 @@
   opacity: .75;
 }
 
-/* --- CARD ACTIONS BUTTON ROW --- */
+/* =========================================================
+   CARD ACTION BUTTON ROW
+========================================================= */
 .card-actions {
   display: flex;
-  gap: 10px;
-  margin-top: 12px;
-  padding: 12px;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 10px 0;
   justify-content: center;
 }
 
-/* --- ADD BUTTON INSIDE CARD --- */
+/* =========================================================
+   ADD BUTTON (inside card)
+========================================================= */
 .add-btn-card {
   background-color: #c3a356;
   color: white;
@@ -71,7 +81,9 @@
   background-color: #a38a49;
 }
 
-/* --- TOP HEADER BUTTON --- */
+/* =========================================================
+   PAGE HEADER + TOP ADD BUTTON
+========================================================= */
 .projects-header {
   display: flex;
   justify-content: space-between;
@@ -94,31 +106,34 @@
   opacity: .85;
 }
 
-/* --- EDIT + DELETE BUTTONS --- */
-.edit-btn-card,
-.delete-btn-card {
-  padding: 6px 12px;
+/* =========================================================
+   EDIT + DELETE BUTTONS (MATCH JSX EXACTLY)
+========================================================= */
+.edit-btn,
+.delete-btn {
+  padding: 8px 14px;
   border: none;
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
   color: white;
 }
 
-/* Edit button */
-.edit-btn-card {
+/* BLUE EDIT BUTTON */
+.edit-btn {
   background-color: #007bff;
 }
 
-.edit-btn-card:hover {
+.edit-btn:hover {
   background-color: #0a84ff;
 }
 
-/* Delete button */
-.delete-btn-card {
+/* RED DELETE BUTTON */
+.delete-btn {
   background-color: #d9534f;
 }
 
-.delete-btn-card:hover {
+.delete-btn:hover {
   background-color: #d00028;
 }
