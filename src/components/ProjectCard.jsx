@@ -43,11 +43,17 @@ export default function ProjectCard({
         )}
 
         <div className="card-actions">
-          <button className="delete-btn-card" onClick={() => onDelete(_id)}>
+          <button
+            className="delete-btn"
+            onClick={() => onDelete(_id)}
+          >
             Delete
           </button>
 
-          <button className="edit-btn-card" onClick={onEditClick}>
+          <button
+            className="edit-btn"
+            onClick={onEditClick}
+          >
             Edit
           </button>
         </div>
