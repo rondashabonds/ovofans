@@ -12,6 +12,7 @@ export default function ProjectCard({
 }) {
   return (
     <article className="card">
+
       <div className="card-media">
         {img ? (
           <img
@@ -40,17 +41,19 @@ export default function ProjectCard({
             {blurb}
           </p>
         )}
+
+        {/* 🔥 Buttons moved INSIDE card-body so they ALWAYS show */}
+        <div className="card-actions">
+          <button className="delete-btn-card" onClick={() => onDelete(_id)}>
+            Delete
+          </button>
+
+          <button className="edit-btn-card" onClick={onEditClick}>
+            Edit
+          </button>
+        </div>
       </div>
 
-      <div className="card-actions">
-        <button className="delete-btn-card" onClick={() => onDelete(_id)}>
-          Delete
-        </button>
-
-        <button className="edit-btn-card" onClick={() => onEditClick()}>
-          Edit
-        </button>
-      </div>
     </article>
   );
 }

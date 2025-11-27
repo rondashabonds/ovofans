@@ -160,6 +160,31 @@
   color: white;
 }
 
+.card-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.delete-btn-card,
+.edit-btn-card {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.delete-btn-card {
+  background-color: #d9534f;
+  color: white;
+}
+
+.edit-btn-card {
+  background-color: #007bff;
+  color: white;
+}
+
 
 }
 
