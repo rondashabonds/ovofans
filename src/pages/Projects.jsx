@@ -7,6 +7,7 @@ import d6 from "../images/d6.jpg";
 import d7 from "../images/d7.jpg";
 import d8 from "../images/d8.jpg";
 
+// Local static projects
 const initialStatic = [
   { _id: "local-1", img: d5, title: "Project 01", category: "Web", year: "2025", blurb: "OVO vibe demo" },
   { _id: "local-2", img: d6, title: "Project 02", category: "Design", year: "2025", blurb: "Cover concepts" },
@@ -14,44 +15,25 @@ const initialStatic = [
   { _id: "local-4", img: d8, title: "Project 04", category: "Other", year: "2025", blurb: "Brand ephemera" },
 ];
 
+const API_BASE = "https://ovofansserver.onrender.com";
+
 export default function Projects() {
   const [staticProjects, setStaticProjects] = useState(initialStatic);
   const [dbProjects, setDbProjects] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [editingProject, setEditingProject] = useState(null);
 
-  // Load DB projects
+  // ⬇️ Load MongoDB projects
   const loadProjects = async () => {
     try {
-      const res = await fetch("https://ovofansserver.onrender.com/api/projects");
+      const res = await fetch(`${API_BASE}/api/projects`);
       if (!res.ok) throw new Error("Failed to fetch");
 
       const data = await res.json();
       setDbProjects(data);
     } catch (err) {
-      setDbProjects([]); // fail-safe
-    }
-  };
-
-  // Delete a project
-  const deleteProject = async (id) => {
-    if (!window.confirm("Delete this project?")) return;
-
-    // Static projects
-    if (id.startsWith("local-")) {
-      setStaticProjects(staticProjects.filter((p) => p._id !== id));
-      return;
-    }
-
-    // DB projects
-    try {
-      await fetch(`https://ovofansserver.onrender.com/api/projects/${id}`, {
-        method: "DELETE",
-      });
-
-      loadProjects();
-    } catch (err) {
-      console.log("Delete error", err);
+      console.log("DB Load Error → fallback to empty list");
+      setDbProjects([]);
     }
   };
 
@@ -59,19 +41,40 @@ export default function Projects() {
     loadProjects();
   }, []);
 
-  const allProjects = [...staticProjects, ...dbProjects];
+  // ⬇️ Delete static or DB project
+  const deleteProject = async (id) => {
+    if (!window.confirm("Delete this project?")) return;
 
-  const saveStaticEdit = (updatedProject) => {
-    // Replace the static project with the edited one
+    // Local static delete
+    if (id.startsWith("local-")) {
+      setStaticProjects((prev) => prev.filter((p) => p._id !== id)); // FIXED
+      return;
+    }
+
+    // DB delete
+    try {
+      await fetch(`${API_BASE}/api/projects/${id}`, { method: "DELETE" });
+      loadProjects();
+    } catch (err) {
+      console.error("Delete error:", err);
+    }
+  };
+
+  // ⬇️ Save static project edits (from modal)
+  const saveStaticEdit = (updated) => {
     setStaticProjects((prev) =>
-      prev.map((p) => (p._id === updatedProject._id ? updatedProject : p))
+      prev.map((p) => (p._id === updated._id ? updated : p))
     );
   };
+
+  // Combine static + db projects
+  const allProjects = [...staticProjects, ...dbProjects];
 
   return (
     <section id="projects">
       <div className="container">
 
+        {/* HEADER + ADD BUTTON */}
         <div className="projects-header">
           <h2>All Projects</h2>
 
@@ -86,6 +89,7 @@ export default function Projects() {
           </button>
         </div>
 
+        {/* PROJECT GRID */}
         <div className="grid">
           {allProjects.map((p) => (
             <ProjectCard
@@ -101,12 +105,13 @@ export default function Projects() {
         </div>
       </div>
 
+      {/* MODAL */}
       {showModal && (
         <AddProjectModal
           close={() => setShowModal(false)}
           refreshProjects={loadProjects}
           project={editingProject}
-          saveStaticEdit={saveStaticEdit}  // ⭐ Add this so modal can save static projects
+          saveStaticEdit={saveStaticEdit}
         />
       )}
     </section>
