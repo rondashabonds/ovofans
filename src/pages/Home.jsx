@@ -12,29 +12,21 @@ export default function Home() {
     async function fetchAlbums() {
       try {
         const res = await fetch(`${API_BASE}/api/albums`);
-        if (!res.ok) throw new Error("Failed to fetch albums");
-
         const data = await res.json();
-        console.log("Albums from server:", data); // DEBUG
         setAlbums(data);
       } catch (err) {
         console.error("Failed to fetch albums:", err);
       }
     }
-
     fetchAlbums();
   }, []);
 
   return (
     <section id="home">
-
       <section className="hero">
         <div className="container">
           <h1>OVO Edition</h1>
-          <p>
-            Drake is one of the most streamed artists in the world,
-            with billions of plays across platforms.
-          </p>
+          <p>Drake is one of the most streamed artists in the world.</p>
         </div>
       </section>
 
@@ -45,7 +37,7 @@ export default function Home() {
           {albums.map((album) => (
             <AlbumCard
               key={album._id}
-              img={API_BASE + album.cover}   // ⭐ FIXED ⭐
+              img={`${API_BASE}${album.cover}`}   // ⭐ ABSOLUTE URL
               name={album.title}
               meta={`${album.year} • ${album.type}`}
               href={`/album/${album._id}`}
@@ -53,7 +45,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
     </section>
   );
 }
