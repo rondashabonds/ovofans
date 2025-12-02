@@ -31,20 +31,66 @@ export default function Home() {
       </section>
 
       <section className="album-section container">
-        <h2>Featured Albums</h2>
+  <h2>Featured Albums</h2>
 
-        <div className="album-grid">
-          {albums.map((album) => (
-            <AlbumCard
-              key={album._id}
-              img={`${API_BASE}${album.cover}`}   // ⭐ ABSOLUTE URL
-              name={album.title}
-              meta={`${album.year} • ${album.type}`}
-              href={`/album/${album._id}`}
-            />
-          ))}
-        </div>
-      </section>
-    </section>
-  );
-}
+  <div className="album-grid">
+
+    <AlbumCard
+      img={require("../images/d11.jpg")}
+      name="Thank Me Later"
+      meta="2010 • Album"
+      href="#"
+    />
+
+    <AlbumCard
+      img={require("../images/albums/take-care.jpg")}
+      name="Take Care"
+      meta="2011 • Album"
+      href="#"
+    />
+
+    <AlbumCard
+      img={require("../images/albums/nothing-was-the-same.jpg")}
+      name="Nothing Was the Same"
+      meta="2013 • Album"
+      href="#"
+    />
+
+    <AlbumCard
+      img={require("../images/albums/views.jpg")}
+      name="Views"
+      meta="2016 • Album"
+      href="#"
+    />
+
+    <AlbumCard
+      img={require("../images/albums/scorpion.jpg")}
+      name="Scorpion"
+      meta="2018 • Double Album"
+      href="#"
+    />
+
+    <AlbumCard
+      img={require("../images/albums/certified-lover-boy.jpg")}
+      name="Certified Lover Boy"
+      meta="2021 • Album"
+      href="#"
+    />
+
+    <AlbumCard
+      img={require("../images/drake-new-songs.webp")}
+      name="Honestly, Nevermind"
+      meta="2022 • Album"
+      href="#"
+    />
+
+    <AlbumCard
+      img={require("../images/Drake-mixtape.jpg")}
+      name="For All The Dogs"
+      meta="2023 • Album"
+      href="#"
+    />
+
+  </div>
+</section>
+</section> )};
