@@ -3,7 +3,6 @@ import AlbumCard from "../components/AlbumCard.jsx";
 
 import "../styles/album-card.css";
 
-// FORCE API BASE TO YOUR RENDER URL
 const API_BASE = "https://ovofansserver.onrender.com";
 
 export default function Home() {
@@ -16,18 +15,19 @@ export default function Home() {
         if (!res.ok) throw new Error("Failed to fetch albums");
 
         const data = await res.json();
+        console.log("Albums from server:", data); // DEBUG
         setAlbums(data);
       } catch (err) {
         console.error("Failed to fetch albums:", err);
       }
     }
+
     fetchAlbums();
   }, []);
 
   return (
     <section id="home">
 
-      {/* Hero */}
       <section className="hero">
         <div className="container">
           <h1>OVO Edition</h1>
@@ -38,7 +38,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Albums Section */}
       <section className="album-section container">
         <h2>Featured Albums</h2>
 
@@ -46,7 +45,7 @@ export default function Home() {
           {albums.map((album) => (
             <AlbumCard
               key={album._id}
-              img={`${API_BASE}${album.cover}`}  // FULL IMAGE URL
+              img={API_BASE + album.cover}   // ⭐ FIXED ⭐
               name={album.title}
               meta={`${album.year} • ${album.type}`}
               href={`/album/${album._id}`}
