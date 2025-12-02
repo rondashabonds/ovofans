@@ -43,35 +43,35 @@ export default function Home() {
     />
 
     <AlbumCard
-      img={require("../images/albums/take-care.jpg")}
+      img={require("../images/take-care.jpg")}
       name="Take Care"
       meta="2011 • Album"
       href="#"
     />
 
     <AlbumCard
-      img={require("../images/albums/nothing-was-the-same.jpg")}
+      img={require("../images/d12.webp")}
       name="Nothing Was the Same"
       meta="2013 • Album"
       href="#"
     />
 
     <AlbumCard
-      img={require("../images/albums/views.jpg")}
+      img={require("../images/d3.jpg")}
       name="Views"
       meta="2016 • Album"
       href="#"
     />
 
     <AlbumCard
-      img={require("../images/albums/scorpion.jpg")}
+      img={require("../images/drakescorp.webp")}
       name="Scorpion"
       meta="2018 • Double Album"
       href="#"
     />
 
     <AlbumCard
-      img={require("../images/albums/certified-lover-boy.jpg")}
+      img={require("../images/d9.webp")}
       name="Certified Lover Boy"
       meta="2021 • Album"
       href="#"
