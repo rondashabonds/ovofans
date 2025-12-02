@@ -3,7 +3,12 @@ import React, { useState, useEffect } from "react";
 
 const API_BASE = "https://ovofansserver.onrender.com";
 
-export default function AddProjectModal({ close, refreshProjects, project }) {
+export default function AddProjectModal({
+  close,
+  refreshProjects,
+  project,
+  saveStaticEdit,   // ⭐ NEW PROP
+}) {
   const [preview, setPreview] = useState("");
   const [result, setResult] = useState("");
 
@@ -26,8 +31,37 @@ export default function AddProjectModal({ close, refreshProjects, project }) {
 
     const formData = new FormData(e.target);
 
-    // If editing, remove empty file field so server doesn't reject
-    if (!formData.get("img")?.name) {
+    const updatedProject = {
+      ...project,
+      title: formData.get("title"),
+      category: formData.get("category"),
+      year: formData.get("year"),
+      blurb: formData.get("blurb"),
+      img: project?.img, // keep existing image unless new file uploaded
+    };
+
+    const newFile = formData.get("img")?.name;
+
+    // ---------------------------------------
+    // 1️⃣ STATIC PROJECT EDIT
+    // ---------------------------------------
+    if (project && project._id.startsWith("local-")) {
+      if (newFile) {
+        updatedProject.img = preview;
+      }
+
+      saveStaticEdit(updatedProject);
+      setResult("Updated local project!");
+      setTimeout(close, 500);
+      return;
+    }
+
+    // ---------------------------------------
+    // 2️⃣ DATABASE PROJECT EDIT / ADD
+    // ---------------------------------------
+
+    // If no new image uploaded → remove field
+    if (!newFile) {
       formData.delete("img");
     }
 
