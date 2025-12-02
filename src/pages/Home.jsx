@@ -3,12 +3,11 @@ import AlbumCard from "../components/AlbumCard.jsx";
 
 import "../styles/album-card.css";
 
-//FORCE API BASE TO YOUR RENDER URL
+// FORCE API BASE TO YOUR RENDER URL
 const API_BASE = "https://ovofansserver.onrender.com";
 
 export default function Home() {
   const [albums, setAlbums] = useState([]);
-  const [selected] = useState(null);
 
   useEffect(() => {
     async function fetchAlbums() {
@@ -32,19 +31,25 @@ export default function Home() {
       <section className="hero">
         <div className="container">
           <h1>OVO Edition</h1>
-          <p>Drake is one of the most streamed artists in the world, with billions of plays across platforms.</p>
+          <p>
+            Drake is one of the most streamed artists in the world,
+            with billions of plays across platforms.
+          </p>
         </div>
       </section>
 
-      {/* Albums */}
+      {/* Albums Section */}
       <section className="album-section container">
         <h2>Featured Albums</h2>
+
         <div className="album-grid">
           {albums.map((album) => (
             <AlbumCard
               key={album._id}
-              album={album}
-              onSelect={() => console.log("selected", album)}
+              img={`${API_BASE}${album.cover}`}  // FULL IMAGE URL
+              name={album.title}
+              meta={`${album.year} • ${album.type}`}
+              href={`/album/${album._id}`}
             />
           ))}
         </div>
