@@ -1,18 +1,22 @@
 {
   "files": {
     "main.css": "/ovofans/static/css/main.7994fd09.css",
-    "main.js": "/ovofans/static/js/main.e10c1f0d.js",
+    "main.js": "/ovofans/static/js/main.794447b3.js",
     "static/media/d12.webp": "/ovofans/static/media/d12.9325615c42373ea5b2ec.webp",
     "static/media/d4.jpg": "/ovofans/static/media/d4.4a190704aebc14ec159b.jpg",
     "static/media/d5.webp": "/ovofans/static/media/d5.702fa841b5b9cb8b6560.webp",
+    "static/media/Drake-mixtape.jpg": "/ovofans/static/media/Drake-mixtape.1d9229b720814d81494b.jpg",
+    "static/media/take-care.jpg": "/ovofans/static/media/take-care.43c875dc87ee3cb3a435.jpg",
     "static/media/d11.jpg": "/ovofans/static/media/d11.b6baf87852efb17d019d.jpg",
+    "static/media/drake-new-songs.webp": "/ovofans/static/media/drake-new-songs.c4717b809b133e658655.webp",
+    "static/media/drakescorp.webp": "/ovofans/static/media/drakescorp.6ee13f948bb5f3c90117.webp",
     "static/media/d9.webp": "/ovofans/static/media/d9.fa0666e4e03a71afb100.webp",
     "index.html": "/ovofans/index.html",
     "main.7994fd09.css.map": "/ovofans/static/css/main.7994fd09.css.map",
-    "main.e10c1f0d.js.map": "/ovofans/static/js/main.e10c1f0d.js.map"
+    "main.794447b3.js.map": "/ovofans/static/js/main.794447b3.js.map"
   },
   "entrypoints": [
     "static/css/main.7994fd09.css",
-    "static/js/main.e10c1f0d.js"
+    "static/js/main.794447b3.js"
   ]
 }
