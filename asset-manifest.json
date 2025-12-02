@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ovofans/static/css/main.7994fd09.css",
-    "main.js": "/ovofans/static/js/main.794447b3.js",
+    "main.js": "/ovofans/static/js/main.951b514f.js",
     "static/media/d12.webp": "/ovofans/static/media/d12.9325615c42373ea5b2ec.webp",
     "static/media/d4.jpg": "/ovofans/static/media/d4.4a190704aebc14ec159b.jpg",
     "static/media/d5.webp": "/ovofans/static/media/d5.702fa841b5b9cb8b6560.webp",
@@ -13,10 +13,10 @@
     "static/media/d9.webp": "/ovofans/static/media/d9.fa0666e4e03a71afb100.webp",
     "index.html": "/ovofans/index.html",
     "main.7994fd09.css.map": "/ovofans/static/css/main.7994fd09.css.map",
-    "main.794447b3.js.map": "/ovofans/static/js/main.794447b3.js.map"
+    "main.951b514f.js.map": "/ovofans/static/js/main.951b514f.js.map"
   },
   "entrypoints": [
     "static/css/main.7994fd09.css",
-    "static/js/main.794447b3.js"
+    "static/js/main.951b514f.js"
   ]
 }
