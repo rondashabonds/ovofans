@@ -23,7 +23,7 @@ export default function Projects() {
   const [showModal, setShowModal] = useState(false);
   const [editingProject, setEditingProject] = useState(null);
 
-  // ⬇️ Load MongoDB projects
+  // Load DB projects
   const loadProjects = async () => {
     try {
       const res = await fetch(`${API_BASE}/api/projects`);
@@ -41,13 +41,15 @@ export default function Projects() {
     loadProjects();
   }, []);
 
-  // ⬇️ Delete static or DB project
+  // Delete static or DB project
   const deleteProject = async (id) => {
     if (!window.confirm("Delete this project?")) return;
 
-    // Local static delete
-    if (id.startsWith("local-")) {
-      setStaticProjects((prev) => prev.filter((p) => p._id !== id)); // FIXED
+    const isLocal = String(id).includes("local");
+
+    // ⭐ FIXED: Local delete does NOT hit the server
+    if (isLocal) {
+      setStaticProjects((prev) => prev.filter((p) => p._id !== id));
       return;
     }
 
@@ -60,21 +62,21 @@ export default function Projects() {
     }
   };
 
-  // ⬇️ Save static project edits (from modal)
+  // Save static project edits
   const saveStaticEdit = (updated) => {
     setStaticProjects((prev) =>
       prev.map((p) => (p._id === updated._id ? updated : p))
     );
   };
 
-  // Combine static + db projects
+  // Combine static + db projects into one grid
   const allProjects = [...staticProjects, ...dbProjects];
 
   return (
     <section id="projects">
       <div className="container">
 
-        {/* HEADER + ADD BUTTON */}
+        {/* HEADER */}
         <div className="projects-header">
           <h2>All Projects</h2>
 
@@ -105,7 +107,7 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* MODAL */}
+      {/* ADD/EDIT MODAL */}
       {showModal && (
         <AddProjectModal
           close={() => setShowModal(false)}
