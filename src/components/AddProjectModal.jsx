@@ -7,12 +7,11 @@ export default function AddProjectModal({
   close,
   refreshProjects,
   project,
-  saveStaticEdit,   // ⭐ NEW PROP
+  saveStaticEdit,
 }) {
   const [preview, setPreview] = useState("");
   const [result, setResult] = useState("");
 
-  // Prefill fields when editing
   useEffect(() => {
     if (project) {
       setPreview(project.img || "");
@@ -37,30 +36,22 @@ export default function AddProjectModal({
       category: formData.get("category"),
       year: formData.get("year"),
       blurb: formData.get("blurb"),
-      img: project?.img, // keep existing image unless new file uploaded
+      img: project?.img || "",
     };
 
     const newFile = formData.get("img")?.name;
 
-    // ---------------------------------------
-    // 1️⃣ STATIC PROJECT EDIT
-    // ---------------------------------------
-    if (project && project._id.startsWith("local-")) {
+    if (project && String(project._id).includes("local")) {
       if (newFile) {
         updatedProject.img = preview;
       }
 
       saveStaticEdit(updatedProject);
       setResult("Updated local project!");
-      setTimeout(close, 500);
+      setTimeout(close, 400);
       return;
     }
 
-    // ---------------------------------------
-    // 2️⃣ DATABASE PROJECT EDIT / ADD
-    // ---------------------------------------
-
-    // If no new image uploaded → remove field
     if (!newFile) {
       formData.delete("img");
     }
@@ -80,12 +71,11 @@ export default function AddProjectModal({
       });
 
       const raw = await response.text();
-      console.log("RAW RESPONSE:", raw);
 
       if (response.ok) {
         setResult(project ? "Project updated!" : "Project added!");
         refreshProjects();
-        setTimeout(close, 500);
+        setTimeout(close, 400);
       } else {
         setResult("Error: " + raw);
       }
